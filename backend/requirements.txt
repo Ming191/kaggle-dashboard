@@ -1,0 +1,6 @@
+fastapi>=0.116,<1
+uvicorn[standard]>=0.35,<1
+kaggle>=2.2.3,<3
+kagglesdk>=0.1.33,<1
+pydantic>=2.11,<3
+pytest>=8,<9

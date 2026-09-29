@@ -1,0 +1,12 @@
+[
+  {
+    "id": "student-a",
+    "name": "Student A",
+    "config_dir": "/credentials/student-a"
+  },
+  {
+    "id": "student-b",
+    "name": "Student B",
+    "config_dir": "/credentials/student-b"
+  }
+]

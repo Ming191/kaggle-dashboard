@@ -1,0 +1,29 @@
+services:
+  backend:
+    build: ./backend
+    environment:
+      CREDENTIALS_DIR: /credentials
+      ACCOUNTS_FILE: /config/accounts.json
+      DATABASE_PATH: /data/quota.db
+      REFRESH_INTERVAL_SECONDS: ${REFRESH_INTERVAL_SECONDS:-600}
+      MAX_CONCURRENT_CHECKS: ${MAX_CONCURRENT_CHECKS:-4}
+    volumes:
+      - ./credentials:/credentials:ro
+      - ./config:/config:ro
+      - quota-data:/data
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    environment:
+      VITE_API_TARGET: http://backend:8000
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+    restart: unless-stopped
+
+volumes:
+  quota-data:
